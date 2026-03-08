@@ -1,0 +1,248 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.7",
+    "lastTouchedAt": "2026-03-08T14:41:28.048Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-07T17:25:13.436Z",
+    "lastRunVersion": "2026.3.7",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "volcengine:default": {
+        "provider": "volcengine",
+        "mode": "api_key"
+      }
+    },
+    "order": {
+      "volcengine:default": [
+        "primary"
+      ]
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "volcengine": {
+        "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+        "apiKey": "e9eae502-6ee5-4f18-81c0-80bd3cf622bf",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "ep-m-20260307064620-t97d7",
+            "name": "ep-m-20260307064620-t97d7",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "doubao-1-5-pro-32k-250115",
+            "name": "doubao-1-5-pro-32k-250115",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          },
+          {
+            "id": "doubao-seedance-1-5-pro-251215",
+            "name": "doubao-seedance-1-5-pro-251215",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 4096
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "volcengine/doubao-1-5-pro-32k-250115"
+      },
+      "models": {
+        "volcengine/ep-m-20260307064620-t97d7": {
+          "alias": "ep-m-20260307064620-t97d7"
+        },
+        "volcengine/doubao-1-5-pro-32k-250115": {
+          "alias": "doubao-1-5-pro-32k-250115"
+        },
+        "volcengine/doubao-seedance-1-5-pro-251215": {
+          "alias": "doubao-seedance-1-5-pro-251215"
+        }
+      },
+      "workspace": "C:\\Users\\su94\\.openclaw\\workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "name": "main",
+        "workspace": "C:\\Users\\su94\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\su94\\.openclaw\\agents\\main\\agent",
+        "model": "volcengine/doubao-1-5-pro-32k-250115",
+        "identity": {
+          "name": "主机器人",
+          "emoji": "🎯"
+        },
+        "tools": {
+          "profile": "full"
+        }
+      },
+      {
+        "id": "supervisor",
+        "name": "supervisor",
+        "workspace": "C:\\Users\\su94\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\su94\\.openclaw\\agents\\supervisor\\agent",
+        "model": "volcengine/doubao-1-5-pro-32k-250115",
+        "identity": {
+          "name": "主管机器人",
+          "emoji": "🎯"
+        }
+      },
+      {
+        "id": "copywriter",
+        "name": "copywriter",
+        "workspace": "C:\\Users\\su94\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\su94\\.openclaw\\agents\\copywriter\\agent",
+        "model": "volcengine/doubao-1-5-pro-32k-250115",
+        "identity": {
+          "name": "文案机器人",
+          "emoji": "✍️"
+        }
+      },
+      {
+        "id": "video",
+        "name": "video",
+        "workspace": "C:\\Users\\su94\\.openclaw\\workspace",
+        "agentDir": "C:\\Users\\su94\\.openclaw\\agents\\video\\agent",
+        "model": "volcengine/doubao-seedance-1-5-pro-251215",
+        "identity": {
+          "name": "视频机器人",
+          "emoji": "🎬"
+        }
+      }
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "native": "auto",
+      "bypass_validation": true,
+      "long_connection": true,
+      "health_check_interval": 300,
+      "token_refresh_interval": 3600,
+      "reconnect_interval": 10,
+      "accounts": {
+        "default": {
+          "appId": "cli_a921dc94df789cba",
+          "appSecret": "a0N32YpUL3NMEqBr7WfHQbSBBtHeorTZ",
+          "domain": "https://open.feishu.cn",
+          "enabled": true,
+          "agent": "main"
+        },
+        "supervisor": {
+          "appId": "cli_a921dc94df789cba",
+          "appSecret": "a0N32YpUL3NMEqBr7WfHQbSBBtHeorTZ",
+          "domain": "https://open.feishu.cn",
+          "enabled": true,
+          "agent": "supervisor"
+        },
+        "copywriter": {
+          "appId": "cli_a927e7ee2378dbca",
+          "appSecret": "GaDrF7rdUfiqwaW8fJH3kgmHowhFLN48",
+          "domain": "https://open.feishu.cn",
+          "enabled": true,
+          "agent": "copywriter"
+        },
+        "video": {
+          "appId": "cli_a927e19e1778dbcb",
+          "appSecret": "oFNO6KpsXITS32Z75x0UMhifwpHY6Cum",
+          "domain": "https://open.feishu.cn",
+          "enabled": true,
+          "agent": "video"
+        }
+      },
+      "connectionMode": "websocket"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "e1ff39b54a577075916a70da97c1cf8fdf3347579e96ea99"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "pnpm"
+    }
+  },
+  "plugins": {
+    "load": {
+      "paths": []
+    },
+    "entries": {
+      "feishu": {
+        "enabled": true
+      }
+    }
+  }
+}
